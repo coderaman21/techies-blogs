@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"  > -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">       
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  {% block css %}   {% endblock %}
+  <style>
+      
+      span a{
+        text-decoration: none;
+        color: rgba(0,0,0,.55);
+      }
+      @media only screen and (max-width:980px) {
+        .h2,h2{
+          font-size: 1.5rem;
+        } 
+      }
+      
+  </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'blog home' %}">Techie blogs</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link {% block HomeActive %} {% endblock %}" aria-current="page" href="{% url 'blog home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block AboutActive %} {% endblock %}" href="{% url 'blog about' %}">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block ContactActive %} {% endblock %}" href="{% url 'blog contact' %}">Contact</a>
+              </li>
+            </ul>
+           <!-- navbar right side  -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+              <a href="{% url 'post create' %}"class="nav-item nav-link">Create Post</a>
+              <a href="{% url 'profile' %}"class="nav-item nav-link">Profile</a>
+              <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out</a>
+              {% else %}
+              <a href="{% url 'login' %}" class="nav-item nav-link">Log In</a>
+              <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up</a>
+              {% endif %}
+            </div>
+            <!-- <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+
+          </div>
+        </div>
+      </nav>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{message.tags}}">{{message}}</div>  
+        {% endfor %}
+      {% endif %}
+
+    {% block body %}
+    {% endblock %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+</html>

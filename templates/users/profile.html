@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% block title %} Profile {% endblock %}
+{% load crispy_forms_tags %}
+{% block css %}
+    <style>
+        @media only screen and (max-width:980px) {
+            img
+            {
+                width: 86px;
+                height: 94px;
+            }
+            .h2,h2{font-size: 1rem;}
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="content-section">
+        <div class="media">
+            <img src="{{user.profile.image.url}}" alt="image" class="rounded-circle mr-2" width="216px" height="224px">
+            <div class="media-body ml-2">
+                <h2 class="account-heading mt-4 ">{{user.username}}</h2>
+                <p class="text-secondary">{{user.email}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Update profile info.</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info">Update</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
