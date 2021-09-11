@@ -10,7 +10,7 @@
         <div class="col-md-6">
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-              <a href='category_posts/{{post.category}}' class="d-inline-block mb-2 text-primary">{{post.categorypyt}}</a>
+              <a href='category_posts/{{post.category}}' class="d-inline-block mb-2 text-primary">{{post.category|title}}</a>
               
               <h3 class="mb-0">{{post.title}}</h3>
               <a class="mb-1 text-muted" href="{% url 'user posts' post.author.username %}">{{post.author}}</a>
