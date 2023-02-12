@@ -13,9 +13,12 @@ class Blogpost(models.Model):
     sub_heading = models.CharField(max_length=100)
     h2_content = models.TextField()
     date = models.DateTimeField(default=timezone.now)
-
+    audio = models.FileField(upload_to='audioFiles',default='song.mp3')
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('blog post' , kwargs={'pk':self.pk})
+
+
+    
