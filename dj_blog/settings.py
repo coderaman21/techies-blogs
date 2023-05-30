@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-o--h!10)ov#_tthy4!82m)z8zo)(m6*g^l&-0aafb^1$&nb-(7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','techies-blogs.onrender.com','https://mf9wh8nrra.execute-api.ap-south-1.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1','.vercel.app','https://mf9wh8nrra.execute-api.ap-south-1.amazonaws.com']
 
 
 # Application definition
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'dj_blog.wsgi.application'
+WSGI_APPLICATION = 'dj_blog.wsgi.app'
 
 
 # Database
