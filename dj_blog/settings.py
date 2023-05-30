@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'dj_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'TBolRrSZU9W8',
+        'HOST': 'ep-yellow-bush-353536-pooler.ap-southeast-1.postgres.vercel-storage.com',
+        'PORT': '5432',
     }
 }
 
